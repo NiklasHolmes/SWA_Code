@@ -1,7 +1,0 @@
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\obj\Debug\Dojo1_Abgabe.csprojAssemblyReference.cache
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\obj\Debug\Dojo1_Abgabe.csproj.CoreCompileInputs.cache
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\bin\Debug\Dojo1_Abgabe.exe.config
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\bin\Debug\Dojo1_Abgabe.exe
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\bin\Debug\Dojo1_Abgabe.pdb
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\obj\Debug\Dojo1_Abgabe.exe
-C:\Users\nikla\source\repos\Dojo1_Abgabe\Dojo1_Abgabe\obj\Debug\Dojo1_Abgabe.pdb
