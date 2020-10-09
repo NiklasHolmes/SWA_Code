@@ -5,12 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dojo2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="960" Width="1280" Background="Black">
+    <Grid ShowGridLines="true">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="131*"/>
+            <RowDefinition Height="163*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="115*"/>
-            <ColumnDefinition Width="679*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
+        
+        <Label Content="...tbd..." Grid.RowSpan="5" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Foreground="White" FontSize="30" />
+
+        <Border Grid.RowSpan="5" Margin="5" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/> <!--Hauptlinie vertikal-->
+        
+        <!--#region Auswahlblock-->
+        <Button Content="Übersicht" Grid.Column="1" HorizontalAlignment="Center" Margin="10.8,6,14.2,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="19"/>
+        <Button Content="Räume" Grid.Column="1" HorizontalAlignment="Center" Margin="10.8,6,14.2,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="19"/>
+        <!--#endregion-->
+        
+        <!--#region Soundblock-->
+        <Button Name="Glocke" Grid.Column="1" HorizontalAlignment="Left" Margin="20" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" BorderBrush="Black" Background="Black">
+            <Image Source="Images/Bell New-WF.png"></Image>
+        </Button>
+        <Button Name="TonAb" Grid.Column="1" HorizontalAlignment="Left" Margin="60,10,10,10" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
+            <Image Source="Images/Speaker Decrease - 01.png"></Image>
+        </Button>
+        <Label Content="4" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="TonAn" Grid.Column="1" HorizontalAlignment="Left" Margin="140,10,10,10" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
+            <Image Source="Images/Speaker Increase - 02.png"></Image>
+        </Button>
+        
+        <!--#endregion-->
 
     </Grid>
 </Window>
