@@ -25,10 +25,10 @@
                 <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
             </StackPanel>
         </Border>
-        
-        <Label Content="...tbd..." HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Foreground="LightGray" FontSize="30" Height="49" Width="94" Margin="496,351,484,10" />
 
-        <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,5,0,35" BorderThickness="1,0,0,0" BorderBrush="LightGray"></Border>  <!--vertikale Linie-->
+        <Label Content="...tbd..." HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" Foreground="LightGray" FontSize="30"/>
+
+        <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,5,0,40" BorderThickness="1,0,0,0" BorderBrush="LightGray"></Border>  <!--vertikale Linie-->
         <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,0,0,10">
             <Grid>
                 <Grid.RowDefinitions>
@@ -114,24 +114,24 @@
                 <!--#endregion-->
 
                 <!--#region Soundblock-->
-                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,28">
+                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,20">
                     <Border Margin="5,0,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
-
+                    
                     <StackPanel Orientation="Horizontal">
-                        <Button Name="Glocke" Margin="10,0,0,0" Height="40" Width="40" BorderBrush="Transparent" Background="Transparent">
+                        <Button Name="Glocke" Margin="10,0,0,0" Height="45" Width="45" BorderBrush="Transparent" Background="Transparent">
                             <Image Source="Images/Bell New-WF.png"></Image>
                         </Button>
-                        <Button Name="TonAb" Margin="5" Height="40" Width="40" Background="Black" BorderBrush="Black">
+                        <Button Name="TonAb" Margin="5" Height="45" Width="45" Background="Black" BorderBrush="Black">
                             <Image Source="Images/Speaker Decrease - 01.png"></Image>
                         </Button>
                         <Label Content="4" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Button Name="TonAn"  Margin="0" Height="40" Width="40" Background="Black" BorderBrush="Black">
+                        <Button Name="TonAn"  Margin="0" Height="45" Width="45" Background="Black" BorderBrush="Black">
                             <Image Source="Images/Speaker Increase - 02.png"></Image>
                         </Button>
 
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <Label Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
+                        <Label Margin="-8" Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
                     </StackPanel>
 
                 </StackPanel>
