@@ -8,38 +8,118 @@
         Title="MainWindow" Height="960" Width="1280" Background="Black">
     <Grid ShowGridLines="true">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="93*"/>
-            <RowDefinition Height="131*"/>
-            <RowDefinition Height="163*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="410"/>
+            <RowDefinition Height="380"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        
-        <Label Content="...tbd..." Grid.RowSpan="5" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Foreground="White" FontSize="30" />
 
-        <Border Grid.RowSpan="5" Margin="5" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/> <!--Hauptlinie vertikal-->
-        
+        <Border Margin="10" BorderBrush="Red" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Margin="0" Height="50" Source="Images/Warning-WF.png"/>
+                <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
+            </StackPanel>
+        </Border>
+
+        <Label Content="...tbd..." HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Foreground="LightGray" FontSize="30" Height="49" Width="94" Margin="490,195.2,489.6,196.6" />
+
+        <Border Grid.RowSpan="4" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray"/>
+        <Border Grid.RowSpan="2" Grid.Column="1" Margin="5,5,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
+        <!--Hauptlinie vertikal-->
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="5">
+            
+            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                
+                <StackPanel Margin="0,5,0,0">    <!--Property Child kann in Border nur einmal gesetzt werden deshalb => extra StackPannel; wird auch etwas nach unten geschoben-->
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Cloud sun02-WF.png" Width="50"></Image>
+                        <Label Content="20°" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Wind.png" Width="50"></Image>
+                        <Label Content="12 km/h" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+            </Border>
+
+            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+
+                <StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Solar.png" Width="50"></Image>
+                        <Label Content="3.545 W" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Man-01.png" Width="50"></Image>
+                        <Label Content="0" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Lock-WF.png" Width="50"></Image>
+                        <Label Content="OK" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+
+            </Border>
+
+            <Border BorderThickness="0,0,0,0" BorderBrush="LightGray">
+                
+                <StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Message Mail-WF.png" Width="50"></Image>
+                        <Label Content="7" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <Image HorizontalAlignment="Left" Source="Images/Tasks.png" Width="50"></Image>
+                        <Label Content="4" Height="36" FontSize="18" Foreground="LightGray" Margin="0,0,140,0"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+
+            </Border>
+
+
+
+
+        </StackPanel>
+
         <!--#region Auswahlblock-->
-        <Button Content="Übersicht" Grid.Column="1" HorizontalAlignment="Center" Margin="10.8,6,14.2,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="19"/>
-        <Button Content="Räume" Grid.Column="1" HorizontalAlignment="Center" Margin="10.8,6,14.2,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="19"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" Margin="0">
+            <Button Content="Übersicht" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+            <Button Content="Räume" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+            <Button Content="Geräte" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+            <Button Content="Gebäude" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+            <Button Content="Sicherheit" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+            <Button Content="Multimedia" HorizontalAlignment="Center" Margin="10,10,5,5" Height="46" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+        </StackPanel>
+
         <!--#endregion-->
-        
+
         <!--#region Soundblock-->
-        <Button Name="Glocke" Grid.Column="1" HorizontalAlignment="Left" Margin="20" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" BorderBrush="Black" Background="Black">
+        <Button Name="Glocke" Grid.Column="1" HorizontalAlignment="Left" Margin="20.4,29.4,0,29.8" Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" BorderBrush="Transparent" Background="Transparent">
             <Image Source="Images/Bell New-WF.png"></Image>
         </Button>
-        <Button Name="TonAb" Grid.Column="1" HorizontalAlignment="Left" Margin="60,10,10,10" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
+        <Button Name="TonAb" Grid.Column="1" HorizontalAlignment="Left" Margin="60.4,29.4,0,29.8" Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
             <Image Source="Images/Speaker Decrease - 01.png"></Image>
         </Button>
-        <Label Content="4" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,0" Grid.Row="4" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Name="TonAn" Grid.Column="1" HorizontalAlignment="Left" Margin="140,10,10,10" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
+        <Label Content="4" Grid.Column="1" HorizontalAlignment="Left" Margin="100.4,29.4,0,29.8" Grid.Row="3" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="TonAn" Grid.Column="1" HorizontalAlignment="Left" Margin="140.4,29.4,0,29.8" Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Background="Black" BorderBrush="Black">
             <Image Source="Images/Speaker Increase - 02.png"></Image>
         </Button>
-        
+
+
         <!--#endregion-->
 
     </Grid>
