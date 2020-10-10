@@ -1,9 +1,9 @@
-﻿<Window x:Class="Dojo2.MainWindow"
+﻿<Window x:Class="Dojo2_Abgabe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dojo2"
+        xmlns:local="clr-namespace:Dojo2_Abgabe"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1280" Background="Black">
     <Grid>
@@ -16,24 +16,30 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>     <!-- rechte Spalte fix auf 200 setzen-->
         </Grid.ColumnDefinitions>
+        
+        <!-- zu Images: versucht mit Ordner, hat nicht funktioniert (auch mit Properties => wurd einfach aus Ordner kopiert in Hauptordner
+        => deshalb jetzt so unübersichtlich in Hauptordner-->
 
         <Border Margin="10" BorderBrush="Red" BorderThickness="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Margin="0" Height="50" Source="Images/Warning-WF.png"/>
+                <Image Margin="0" Height="50" Source="Warning-WF.png"/>
                 <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
             </StackPanel>
         </Border>
         
         <Label Content="...tbd..." HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" Foreground="LightGray" FontSize="30"/>
 
-        <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,5,0,40" BorderThickness="1,0,0,0" BorderBrush="LightGray"></Border>  <!--vertikale Linie-->
+        <!--vertikale Linie: -->
+        <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,5,0,40" BorderThickness="1,0,0,0" BorderBrush="LightGray"></Border>
+
         <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,0,0,10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="109"/>
+                    <!-- unterster Block-->
                     <!--unterster Block-->
                 </Grid.RowDefinitions>
                 <!--<Border Grid.RowSpan="2" Grid.Column="1" Margin="5,5,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"/>-->
@@ -47,12 +53,12 @@
                         <StackPanel Margin="0,5,0,0">
                             <!--Property Child kann in Border nur einmal gesetzt werden deshalb => extra StackPannel; wird auch etwas nach unten geschoben-->
                             <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                                <Image HorizontalAlignment="Left" Source="Images/Cloud sun02-WF.png" Width="50" Height="50"></Image>
+                                <Image HorizontalAlignment="Left" Source="Cloud sun02-WF.png" Width="50" Height="50"></Image>
                                 <Label Content="20°" Height="36" FontSize="18" Foreground="LightGray"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                                <Image HorizontalAlignment="Left" Source="Images/Wind.png" Width="50" Height="50"></Image>
+                                <Image HorizontalAlignment="Left" Source="Wind.png" Width="50" Height="50"></Image>
                                 <Label Content="12 km/h" Height="36" FontSize="18" Foreground="LightGray"/>
                             </StackPanel>
                         </StackPanel>
@@ -64,17 +70,17 @@
                         <StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                                <Image HorizontalAlignment="Left" Source="Images/Solar.png" Width="50" Height="50"></Image>
+                                <Image HorizontalAlignment="Left" Source="Solar.png" Width="50" Height="50"></Image>
                                 <Label Content="3.545 W" Height="36" FontSize="18" Foreground="LightGray"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                                <Image HorizontalAlignment="Left" Source="Images/Man-01.png" Width="50" Height="50"></Image>
+                                <Image HorizontalAlignment="Left" Source="Man-01.png" Width="50" Height="50"></Image>
                                 <Label Content="0" Height="36" FontSize="18" Foreground="LightGray"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                                <Image HorizontalAlignment="Left" Source="Images/Lock-WF.png" Width="50" Height="50"></Image>
+                                <Image HorizontalAlignment="Left" Source="Lock-WF.png" Width="50" Height="50"></Image>
                                 <Label Content="OK" Height="36" FontSize="18" Foreground="LightGray"/>
                             </StackPanel>
 
@@ -85,12 +91,12 @@
                     <StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                            <Image HorizontalAlignment="Left" Source="Images/Message Mail-WF.png" Width="50" Height="50"></Image>
+                            <Image HorizontalAlignment="Left" Source="Message Mail-WF.png" Width="50" Height="50"></Image>
                             <Label Content="7" Height="36" FontSize="18" Foreground="LightGray"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
-                            <Image HorizontalAlignment="Left" Source="Images/Tasks.png" Width="50" Height="50"></Image>
+                            <Image HorizontalAlignment="Left" Source="Tasks.png" Width="50" Height="50"></Image>
                             <Label Content="4" Height="36" FontSize="18" Foreground="LightGray"/>
                         </StackPanel>
 
@@ -114,19 +120,22 @@
                 <!--#endregion-->
 
                 <!--#region Soundblock-->
-                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,20">
+                <StackPanel Grid.Row="1" Margin="0,0,0,20">
+                    <!-- ist per Default auf Orientation=Vertical eingestellt-->
                     <Border Margin="5,0,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
-                    
+                    <!--letzte vertikale Linie-->
+
                     <StackPanel Orientation="Horizontal">
+                        <!-- um Knöpfe unten horizontal anzuordnen-->
                         <Button Name="Glocke" Margin="10,0,0,0" Height="45" Width="45" BorderBrush="Transparent" Background="Transparent">
-                            <Image Source="Images/Bell New-WF.png"></Image>
+                            <Image Source="Bell New-WF.png"></Image>
                         </Button>
                         <Button Name="TonAb" Margin="5" Height="45" Width="45" Background="Black" BorderBrush="Black">
-                            <Image Source="Images/Speaker Decrease - 01.png"></Image>
+                            <Image Source="Speaker Decrease - 01.png"></Image>
                         </Button>
                         <Label Content="4" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         <Button Name="TonAn"  Margin="0" Height="45" Width="45" Background="Black" BorderBrush="Black">
-                            <Image Source="Images/Speaker Increase - 02.png"></Image>
+                            <Image Source="Speaker Mute - 04.png"></Image>
                         </Button>
 
                     </StackPanel>
@@ -136,6 +145,7 @@
 
                 </StackPanel>
 
+                <!-- erster Versuch ohne Stackpanels: -->
                 <!--
                 <Button Name="Glocke" Grid.Column="1" HorizontalAlignment="Left" Margin="20,30,0,30" Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" BorderBrush="Transparent" Background="Transparent">
                     <Image Source="Images/Bell New-WF.png"></Image>
@@ -151,13 +161,8 @@
                 -->
 
                 <!--#endregion-->
-
+                
             </Grid>
-
         </Border>
-
-
-
-
     </Grid>
 </Window>
