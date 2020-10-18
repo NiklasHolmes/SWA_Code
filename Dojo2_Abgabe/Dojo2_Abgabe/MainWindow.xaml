@@ -135,7 +135,7 @@
                         </Button>
                         <Label Content="4" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         <Button Name="TonAn"  Margin="0" Height="45" Width="45" Background="Black" BorderBrush="Black">
-                            <Image Source="Speaker Mute - 04.png"></Image>
+                            <Image Source="Speaker Increase - 02.png"></Image>
                         </Button>
 
                     </StackPanel>

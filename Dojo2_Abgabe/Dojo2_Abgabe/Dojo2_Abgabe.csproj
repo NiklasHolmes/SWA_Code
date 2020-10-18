@@ -127,5 +127,8 @@
   <ItemGroup>
     <Resource Include="Speaker Mute - 04.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Speaker Increase - 02.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
