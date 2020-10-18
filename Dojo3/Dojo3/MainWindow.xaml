@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Dojo3"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1280" Background="Black">
+    <Window.DataContext>
+        <local:UILogic/>
+    </Window.DataContext>
     <Grid>
         <!--ShowGridLines="true"-->
         <Grid.RowDefinitions>
@@ -30,7 +33,26 @@
             </StackPanel>
         </Border>
 
+        <DataGrid HorizontalAlignment="Left" Height="353" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1054">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Description" Width="1*" />
+                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Room}" ClipboardContentBinding="{x:Null}" Header="Room" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding PosX}" ClipboardContentBinding="{x:Null}" Header="PosX" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding PosY}" ClipboardContentBinding="{x:Null}" Header="PosY" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding ValueType}" ClipboardContentBinding="{x:Null}" Header="ValueType" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding ItemType}" ClipboardContentBinding="{x:Null}" Header="ItemType" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Mode}" ClipboardContentBinding="{x:Null}" Header="Mode" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding IsInDesignMode}" ClipboardContentBinding="{x:Null}" Header="IsInDesignMode" Width="1*"/>-->
+                <!--<DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header=" " Width="1*"/>     ist wohl ein Überbleibsel aus vorhergeheneden c# Versionen
+                deshalb hab ich diese Spalte mal weggelassen-->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--  alter Platzfüller:
         <Label Content="...tbd..." HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" Foreground="LightGray" FontSize="30"/>
+        -->
 
         <!--vertikale Linie: -->
         <Border Grid.RowSpan="4" Grid.Column="1" Margin="0,5,0,40" BorderThickness="1,0,0,0" BorderBrush="LightGray"></Border>
@@ -39,7 +61,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
-                    <RowDefinition Height="109"/>
+                    <RowDefinition Height="118"/>
                     <!-- unterster Block-->
                     <!--unterster Block-->
                 </Grid.RowDefinitions>
@@ -96,26 +118,30 @@
                             <Label Content="7" Height="36" FontSize="18" Foreground="LightGray"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Margin="10,5,10,10">
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
                             <Image HorizontalAlignment="Left" Source="Tasks.png" Width="50" Height="50"></Image>
                             <Label Content="4" Height="36" FontSize="18" Foreground="LightGray"/>
                         </StackPanel>
 
+                        <Border BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
+
                     </StackPanel>
 
-                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
+
 
                 </StackPanel>
                 <!--#endregion-->
 
                 <!--#region Auswahlblock-->
-                <StackPanel Grid.Row="0" Margin="0,472,0,0">
+                <StackPanel Grid.Row="0" Margin="0,460,0,0">
                     <Button Content="Übersicht" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
                     <Button Content="Räume" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
                     <Button Content="Geräte" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
                     <Button Content="Gebäude" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
                     <Button Content="Sicherheit" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
                     <Button Content="Multimedia" HorizontalAlignment="Center" Margin="10,10,5,5" Height="45" VerticalAlignment="Top" Width="160" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18"/>
+
+                    <Border Margin="5,10,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
                 </StackPanel>
 
                 <!--#endregion-->
@@ -123,7 +149,7 @@
                 <!--#region Soundblock-->
                 <StackPanel Grid.Row="1" Margin="0,0,0,20">
                     <!-- ist per Default auf Orientation=Vertical eingestellt-->
-                    <Border Margin="5,0,5,0" BorderThickness="0,0,0,1" BorderBrush="LightGray"></Border>
+
                     <!--letzte vertikale Linie-->
 
                     <StackPanel Orientation="Horizontal">
@@ -136,19 +162,26 @@
                         </Button>
                         <Label Content="4" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         <Button Name="TonAn"  Margin="0" Height="45" Width="45" Background="Black" BorderBrush="Black">
-                            <Image Source="Speaker Mute - 04.png"></Image>
+                            <Image Source="Speaker Increase - 02.png"></Image>
                         </Button>
 
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <Label Margin="-8" Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
+                        <!--<Label Margin="74,-15" Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
+                        <TextBlock Margin="0,-15" Text="{Binding TimeString}" ContentStringFormat="yyyy-MM-dd HH:mm:ss" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>-->
+                        <Label Margin="0,-15" Content="{Binding TimeString}" ContentStringFormat="HH:mm" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
-
+                    <StackPanel Orientation="Vertical">
+                        <!--<Label Margin="0,5" Content="20.02.2020" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>-->
+                        <Label Margin="0,5" Content="{Binding TimeString}" ContentStringFormat="dd.MM.yyyy" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
                 </StackPanel>
 
                 <!--#endregion-->
 
             </Grid>
         </Border>
+        
     </Grid>
 </Window>
