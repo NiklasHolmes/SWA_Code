@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{874734E5-4C2C-4C56-8A5C-5F75C1313EB1}</ProjectGuid>
+    <ProjectGuid>{E1D2C616-2011-4256-8D12-986BEC5D3D97}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Dojo3</RootNamespace>
-    <AssemblyName>Dojo3</AssemblyName>
+    <RootNamespace>Dojo3_V2</RootNamespace>
+    <AssemblyName>Dojo3_V2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,26 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=0ffbc31322e9d308, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibsStd10.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibsStd10.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Shared">
-      <HintPath>..\..\..\..\..\Documents\Technikum Semester 3\SWA\SWA-DojoReference\Dojo03\Shared\bin\Debug\Shared.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibsStd10.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -75,12 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Aktor.cs" />
     <Compile Include="Delegates.cs" />
-    <Compile Include="ItemVM.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="TimeDate.cs" />
-    <Compile Include="MainViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -112,7 +90,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,37 +99,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Speaker Increase - 02.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Speaker Decrease - 01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Bell New-WF.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Tasks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Message Mail-WF.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Lock-WF.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Man-01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Solar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Wind.png" />
+    <Resource Include="Warning-WF.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Cloud sun02-WF.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Warning-WF.png" />
+    <Resource Include="Wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Solar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Man-01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lock-WF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Message Mail-WF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Tasks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bell New-WF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Speaker Decrease - 01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Speaker Increase - 02.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

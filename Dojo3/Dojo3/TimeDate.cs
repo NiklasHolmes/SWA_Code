@@ -10,7 +10,6 @@ namespace Dojo3
 {
     class TimeDate
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
         private DateTime _now;
 

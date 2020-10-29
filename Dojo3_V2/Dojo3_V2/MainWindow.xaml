@@ -1,14 +1,15 @@
-﻿<Window x:Class="Dojo3.MainWindow"
+﻿<Window x:Class="Dojo3_V2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dojo3"
+        xmlns:local="clr-namespace:Dojo3_V2"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1280" Background="Black">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
+    
     <Grid>
         <!--ShowGridLines="true"-->
         <Grid.RowDefinitions>
@@ -35,9 +36,9 @@
 
         <Label Content="Aktoren" Grid.Row="1" FontSize="18" Foreground="LightGray" Width="100" Margin="10,10,964,353"/>
         
-        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Height="289" Margin="10,57,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1054" ItemsSource="{Binding AktorenList}">
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Height="289" Margin="10,57,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1054" SelectedItem="{Binding SelectedDevice}" ItemsSource="{Binding AktorenList}" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
-
+                
                 <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="ID" Width=""/>
                 <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Description" Width="1*" />
                 <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" Width="1*"/>
@@ -48,15 +49,15 @@
                 <DataGridTextColumn Binding="{Binding ItemType}" ClipboardContentBinding="{x:Null}" Header="ItemType" Width="1*"/>
                 <DataGridTextColumn Binding="{Binding Mode}" ClipboardContentBinding="{x:Null}" Header="Mode" Width="1*"/>
                 <DataGridTextColumn Binding="{Binding IsInDesignMode}" ClipboardContentBinding="{x:Null}" Header="IsInDesignMode" Width="1*"/>
-                
+
                 <!--<DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header=" " Width="1*"/>     ist wohl ein Überbleibsel aus vorhergeheneden c# Versionen
                 deshalb hab ich diese Spalte mal weggelassen-->
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Button Content="Hinzufügen" Command="{Binding GenerateAktorenBtnClickedCmd}" HorizontalAlignment="Center"  Height="45"  Width="111" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18" Margin="823,371,140,360" Grid.Row="1" Grid.RowSpan="2"/>
         <Button Content="Löschen" Command="{Binding DeleteAktorenBtnClickedCmd}" HorizontalAlignment="Center"  Height="45"  Width="85" BorderBrush="LightGray" Background="Black" Foreground="LightGray" FontSize="18" Margin="967,371,22,360" Grid.Row="1" Grid.RowSpan="2"/>
-        
+
         <Label Content="Sensoren" Grid.Row="2" FontSize="18" Foreground="LightGray" Width="100" Margin="10,10,964,314"/>
 
         <DataGrid HorizontalAlignment="Left" Height="289" Margin="10,57,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1054">
@@ -198,11 +199,12 @@
                     <StackPanel Orientation="Vertical">
                         <!--<Label Margin="74,-15" Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>
                         <TextBlock Margin="0,-15" Text="{Binding TimeString}" ContentStringFormat="yyyy-MM-dd HH:mm:ss" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>-->
-                        <Label Margin="0,-15" Content="{Binding TimerAnzeige, Mode=OneWay}" ContentStringFormat="HH:mm:ss" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Margin="0,-15" Content="{Binding TimeAnzeige}" ContentStringFormat="HH:mm:ss" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <!--, Mode=OneWay-->
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <!--<Label Margin="0,5" Content="20.02.2020" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="LightGray"/>-->
-                        <Label Margin="0,5" Content="{Binding TimerAnzeige, Mode=OneWay}" ContentStringFormat="dd.MM.yyyy" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Margin="0,5" Content="{Binding TimeAnzeige}" ContentStringFormat="dd.MM.yyyy" FontSize="18" Foreground="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                     
                 </StackPanel>
