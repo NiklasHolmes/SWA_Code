@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo4", "Dojo4\Dojo4.csproj", "{B388484C-990D-4886-8E58-65ECFD4589DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo4_Server", "Dojo4_Server\Dojo4_Server.csproj", "{64F57575-84E7-40DD-B114-6526050FDCC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B388484C-990D-4886-8E58-65ECFD4589DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B388484C-990D-4886-8E58-65ECFD4589DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B388484C-990D-4886-8E58-65ECFD4589DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B388484C-990D-4886-8E58-65ECFD4589DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F57575-84E7-40DD-B114-6526050FDCC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F57575-84E7-40DD-B114-6526050FDCC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F57575-84E7-40DD-B114-6526050FDCC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F57575-84E7-40DD-B114-6526050FDCC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72B19D70-B35D-4B0E-A1E4-75E64F7FB5D5}
+	EndGlobalSection
+EndGlobal
