@@ -11,15 +11,15 @@
         <ViewModel:MainViewModel/>
     </Window.DataContext>
     <Grid>
-
-        <Label Content="Messages:" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="176" FontWeight="Bold"/>
-        <ListBox HorizontalAlignment="Left" Height="200" Margin="10,79,0,0" VerticalAlignment="Top" Width="498"/>
-
-        <Label Content="Chat Name: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Margin="81,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
         
+        <Label Content="Messages:" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="176" FontWeight="Bold"/>
+        <ListBox ItemsSource="{Binding MessagesReceived}" HorizontalAlignment="Left" Height="200" Margin="10,79,0,0" VerticalAlignment="Top" Width="498"/>
+        
+        <Label Content="Chat Name: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding ClientName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="18" Margin="81,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+
         <Grid HorizontalAlignment="Left" Height="55" Margin="352,0,0,0" VerticalAlignment="Top" Width="166">
-            <Button Content="Connect" Command="{Binding StartConnectBtnClickedCmd}" BorderThickness="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="106" Height="26" Background="#FF008BFF" Foreground="White" Margin="0,10,10,0">
+            <Button Content="Connect" Command="{Binding ConnectClientBtnClickedCmd}" BorderThickness="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="106" Height="26" Background="#FF008BFF" Foreground="White" Margin="0,10,10,0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -28,9 +28,9 @@
             </Button>
         </Grid>
         <Label Content="Message: " HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Margin="70,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <TextBox Text="{Binding NewMessage, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="18" Margin="70,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Grid HorizontalAlignment="Left" Height="42" Margin="0,279,0,-0.2" VerticalAlignment="Top" Width="518">
-            <Button Content="Send" Command="{Binding StopConnectBtnClickedCmd}" BorderThickness="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="275" Height="20" Background="#FF008BFF" Foreground="White" Margin="0,0,10.4,9.8">
+            <Button Content="Send" Command="{Binding SendBtnClickedCmd}" BorderThickness="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="275" Height="20" Background="#FF008BFF" Foreground="White" Margin="0,0,10.4,9.8">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

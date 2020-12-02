@@ -11,17 +11,30 @@ namespace OurFirstServer
     {
         Socket clientSocket;
         byte[] buffer = new byte[256];
+        //Save name Info
+        string name = "";
 
         public ClientHandler(Socket cs)
         {
             clientSocket = cs;
-            clientSocket.Send(Encoding.ASCII.GetBytes("Hello Client! Ready to receive data..."));       // ACII => damit String umgewandelt wird
+            //Send Name info request (zweiter Teil)
+            clientSocket.Send(Encoding.ASCII.GetBytes("Hello Client! Ready to receive data...\r\n Please enter your name"));       // ACII => damit String umgewandelt wird
+
             Task.Factory.StartNew(ReceiveData);         // generate a new Thread for Receiving data from specific client
         }
 
         public void ReceiveData()
         {
             string newdata = "";
+
+            // extract name from first receive
+            while(!name.Contains("\r\n"))
+            {
+                int length = clientSocket.Receive(buffer);
+                name += Encoding.UTF8.GetString(buffer, 0, length);
+            }
+            name = name.Replace("\r\n", ""); // Enter durch nichts ersetzen
+
             while (true)
             {
                 int length = clientSocket.Receive(buffer);           //schreib alle empfangenden Daten in buffer rein und gib Länge zurück
@@ -29,13 +42,13 @@ namespace OurFirstServer
                 //Console.Write(newdata);
 
                 // Neu, besser:
-                newdata += Encoding.ASCII.GetString(buffer, 0, length);
+                newdata += Encoding.UTF8.GetString(buffer, 0, length);
 
                 if (newdata.Contains("\r\n"))                        // erst wenn ich Enter drücke wird es angezeigt
                 {
-                    Console.Write(newdata);
+                    //Add Name info to message output
+                    Console.Write(name + ": " + newdata);
                     newdata = "";
-
                 }
 
             }

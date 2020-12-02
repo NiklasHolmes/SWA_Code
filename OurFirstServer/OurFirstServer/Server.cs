@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OurFirstServer
@@ -31,7 +32,14 @@ namespace OurFirstServer
             socket.Listen(10);              //=> wie viele Clients in die Liste kommen können die gerade anfragen / auf Bestätigung warten
 
             Console.WriteLine("Listening Mode...");
-            Task.Factory.StartNew(AcceptClient);                // generate a new Thread (Background Thread - wenn Haupt geschlossen auch das)
+            // generate a new Thread (Background Thread - wenn Haupt geschlossen auch das)
+            Task.Factory.StartNew(AcceptClient);
+
+            // stattdessen geht auch (für Threads):
+            //ThreadPool.
+            // hier gibt es mehr Möglichkeiten etwas einzustellen (dafür sind Pool und Factory schneller):
+            //Thread th = new Thread(new ThreadStart("sdfs"));  
+
         }
 
         // Verbindungsnafrage annehmen:
@@ -52,12 +60,10 @@ namespace OurFirstServer
                 clients.Add(new ClientHandler(socket.Accept()));     // Blocking! Der Server bleibt solange stehen, bis etwas reinkommt
                 Console.WriteLine("Client accepted");
 
-                
             }
 
         }
 
-        
         /*public void ReceiveData()
         {
             string newdata = "";
@@ -74,16 +80,8 @@ namespace OurFirstServer
                 {
                     Console.Write(newdata);
                     newdata = "";
-
                 }
-                
-                
             }
-
         }*/
-
-
-
-
     }
 }

@@ -1,0 +1,100 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VmResourceManagerServer"
+        xmlns:ViewModel="clr-namespace:VmResourceManagerServer.ViewModel" xmlns:Converters="clr-namespace:VmResourceManagerServer.Converters" x:Class="VmResourceManagerServer.MainWindow"
+        mc:Ignorable="d"
+        Title="VM Instance Manager" Height="450" Width="800">
+    <Window.Resources>
+        <Converters:StateToImageConverter x:Key="StateToImageConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" Margin="5" SelectedItem="{Binding SelectedDeployableInstance}" ItemsSource="{Binding DeployableInstances}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Height="100" CornerRadius="3" BorderBrush="Black" BorderThickness="1" Width="175">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content ="Type: "/>
+                                <Label Content ="{Binding Type}" FontWeight="Bold"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content ="CPU: "/>
+                                <Label Content ="{Binding CPUs}"/>
+                                <Label Content ="RAM: "/>
+                                <Label Content ="{Binding RAM}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Border BorderBrush="Black" BorderThickness="0,0,1,0" Margin="193,0,0.4,0"/>
+
+        <Button Content="Deploy" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="40" Command="{Binding DeployBtnClickCmd}"/>
+
+        <ItemsControl Grid.Column="2" Margin="5" BorderBrush="Black" BorderThickness="1" ItemsSource="{Binding DeployedInstances}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Height="80" CornerRadius="2" Margin="8" BorderBrush="Black" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{Binding Type}" Margin="5"/>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                <Label Content="No. of CPUs: " Margin="5"/>
+                                <Label Content="{Binding CPUs}" Margin="5"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                <Label Content="RAM: " Margin="5"/>
+                                <Label Content="{Binding RAM}" Margin="5"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
+                                <Label Content="{Binding StorageSize}" Margin="5"/>
+                                <Label Content="GB" Margin="5"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3">
+                                <Label Content="Uptime: " Margin="5"/>
+                                <Label Content="{Binding UpTime}" Margin="5"/>
+                            </StackPanel>
+                            <Image Height="35" Grid.Column="3" Source="{Binding State, Converter={StaticResource StateToImageConverter}}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            
+        </ItemsControl>
+
+    </Grid>
+</Window>

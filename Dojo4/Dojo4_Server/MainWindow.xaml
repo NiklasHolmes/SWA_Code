@@ -39,9 +39,9 @@
                     <Label Content="Connected User(s):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="176" FontWeight="Bold"/>
                     <Label Content="Messages:" HorizontalAlignment="Left" Margin="238,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="{Binding MessagesCnt}" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="28"/>
-                    <ListBox HorizontalAlignment="Left" Height="205" Margin="10,41,0,0" VerticalAlignment="Top" Width="207" SelectedItem="{Binding SelectedClient}"/>
-                    <ListBox HorizontalAlignment="Left" Height="184" Margin="238,41,0,0" VerticalAlignment="Top" Width="244"/>
-                    <Button Content="Drop" Command="{Binding QuitConnectionBtnClickedCmd}" HorizontalAlignment="Left" Margin="164,0,0,18" VerticalAlignment="Bottom" Width="45" Background="#FF008BFF" Foreground="White">
+                    <ListBox ItemsSource="{Binding ConnectedClients}" SelectedItem="{Binding SelectedClient}" HorizontalAlignment="Left" Height="205" Margin="10,41,0,0" VerticalAlignment="Top" Width="207"/>
+                    <ListBox ItemsSource="{Binding Messages}" HorizontalAlignment="Left" Height="184" Margin="238,41,0,0" VerticalAlignment="Top" Width="244"/>
+                    <Button Content="Drop" Command="{Binding DropUserBtnClickedCmd}" HorizontalAlignment="Left" Margin="164,0,0,18" VerticalAlignment="Bottom" Width="45" Background="#FF008BFF" Foreground="White">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="5"/>
