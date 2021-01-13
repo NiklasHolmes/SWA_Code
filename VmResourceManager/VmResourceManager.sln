@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VmResourceManagerServer", "VmResourceManagerServer\VmResourceManagerServer.csproj", "{81EB34E2-6E5E-4D36-91F1-97B81134308C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VmRequestor", "VmRequestor\VmRequestor.csproj", "{4B698C6F-0E73-46F0-8470-5D2056333575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{81EB34E2-6E5E-4D36-91F1-97B81134308C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81EB34E2-6E5E-4D36-91F1-97B81134308C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81EB34E2-6E5E-4D36-91F1-97B81134308C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B698C6F-0E73-46F0-8470-5D2056333575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B698C6F-0E73-46F0-8470-5D2056333575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B698C6F-0E73-46F0-8470-5D2056333575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B698C6F-0E73-46F0-8470-5D2056333575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

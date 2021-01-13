@@ -30,7 +30,11 @@ namespace Dojo5.ViewModel
         public Category SelectedCategory 
         {
             get { return selectedCategory; }
-            set { selectedCategory = value; RaisePropertyChanged(); DisplayToys(value.BrandName); }
+            set { selectedCategory = value;
+                RaisePropertyChanged(); // 
+                DisplayToys(value.BrandName);
+                RaisePropertyChanged("DisplayedToys");
+            }
         }
 
         public MainViewModel()
@@ -81,6 +85,7 @@ namespace Dojo5.ViewModel
             Toys.Add(new ToyVm() { Description = "Ghostbusters", AgeRecommendation = 6, Image = "../Images/Playmobil_Ghostbusters.png", Brand = "Playmobil" });
             Toys.Add(new ToyVm() { Description = "Weihnachts-\nhaus", AgeRecommendation = 4, Image = "../Images/Playmobil_Weihnachtshaus.png", Brand = "Playmobil" });
 
+            // Toys nach Brand in kleinere Listen teilen:
             foreach (ToyVm item in Toys)
             {
                 if (item.Brand == "Lego") 
@@ -106,9 +111,8 @@ namespace Dojo5.ViewModel
                     DisplayedToys = PlaymobilToys;
                     break;
             }
-            RaisePropertyChanged("DisplayedToys");
+            //RaisePropertyChanged("DisplayedToys");
         }
-
 
     }
 }

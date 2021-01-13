@@ -26,7 +26,7 @@ namespace VmResourceManagerServer.Converters
                 case StateType.OnHold:
                     return new BitmapImage(new Uri("../Assets/Images/open-hands.png", UriKind.Relative));
                 case StateType.Stopped:
-                    return new BitmapImage(new Uri("../Assets/Images/cancel-button", UriKind.Relative));
+                    return new BitmapImage(new Uri("../Assets/Images/cancel-button.png", UriKind.Relative));
                 default:
                     return null;
             }

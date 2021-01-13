@@ -88,7 +88,9 @@
                                 <Label Content="Uptime: " Margin="5"/>
                                 <Label Content="{Binding UpTime}" Margin="5"/>
                             </StackPanel>
-                            <Image Height="35" Grid.Column="3" Source="{Binding State, Converter={StaticResource StateToImageConverter}}"/>
+                            <Button Grid.Column="3" Command="{Binding StateChangeBtnClickCmd}">
+                                <Image Height="35" Grid.Column="3" Source="{Binding State, Converter={StaticResource StateToImageConverter}}"/>
+                            </Button>
                         </Grid>
                     </Border>
                 </DataTemplate>

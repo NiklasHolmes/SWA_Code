@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Communication\ClientHandler.cs" />
+    <Compile Include="Communication\Server.cs" />
     <Compile Include="Converters\StateToImageConverter.cs" />
     <Compile Include="ViewModel\InstanceVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

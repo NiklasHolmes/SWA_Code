@@ -34,7 +34,7 @@ namespace Dojo3_Abgabe
         private DispatcherTimer timer = new DispatcherTimer();
         private DateTime _now;
 
-        private Aktor selectedAktor; // variable | class member
+        private Aktor selectedAktor;   // variable | class member
         private Sensor selectedSensor; // variable | class member
 
         //private delegate void Informer(DateTime source);
@@ -68,11 +68,13 @@ namespace Dojo3_Abgabe
             GenerateSensorenBtnClickedCmd = new RelayCommand(() =>
             {
                 AddSensorToList();
-            }, () => { return true; });
+            }, () => { return true; });     // immer true weil adden immer möglich!
 
             DeleteSensorenBtnClickedCmd = new RelayCommand(DeleteSensor,
                 () => { if (selectedSensor == null) return false; else return true; }); // anonyme Methode!!
 
+
+            // Zeit: 
             _now = DateTime.Now;                            // aktuelle Zeit
             //timer.Interval = TimeSpan.FromSeconds(1);       //setze Intervall => jede Sekunde               new TimeSpan(0, 0, 1);  //0 = h, 0 = min, dann sec
             timer.Interval = TimeSpan.FromMilliseconds(250);        // ohne Milliseconds überspringt er manchmal Sekunden
@@ -91,7 +93,6 @@ namespace Dojo3_Abgabe
                 DecreaseSpeaker();
             }, () => { return true; });
 
-
         }
 
         private void AddAktorToList()
@@ -99,6 +100,7 @@ namespace Dojo3_Abgabe
             if (NewID > 7) {
                 NewID = 0;
             }
+            // 
             AktorenList.Add(AktorenPrepared[NewID]);
             NewID++;
         }
@@ -115,7 +117,7 @@ namespace Dojo3_Abgabe
         private void DeleteAktor()
         {
             AktorenList.Remove(SelectedAktor);     //durch SelectedItem
-            NotifyPropertyChanged("AktorenList");
+            NotifyPropertyChanged("AktorenList");   // AktorenList Anzeige muss aktualisiert werden (GUI informieren)
         }
         private void DeleteSensor()
         {
@@ -129,7 +131,7 @@ namespace Dojo3_Abgabe
             set
             {
                 selectedAktor = value;
-                // GUI informieren wenn sich etwas ändert => fragr dann das mitgegebene Property nach Wert
+                // GUI informieren wenn sich etwas ändert => fragt dann das mitgegebene Property nach Wert
             }
         }
 
@@ -230,7 +232,6 @@ namespace Dojo3_Abgabe
             //AktorenList.Add(item: new BaseActuator("namestring", "beschreibung", 5, "raum", "boolean"));
 
         }
-
 
         public DateTime TimeAnzeige
         {
