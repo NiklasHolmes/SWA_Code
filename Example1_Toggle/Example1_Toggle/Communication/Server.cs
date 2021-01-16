@@ -9,34 +9,42 @@ using System.Threading.Tasks;
 
 namespace Example1_Toggle.Communication
 {
-    class Server
+    public class Server
     {
+
+
         Socket serverSocket;            // using NetSockets
-        List<ClientHandler> clients = new List<ClientHandler>();
-        Action<string> GuiUpdater;
+        public List<ClientHandler> clients = new List<ClientHandler>();
+        Action GuiUpdater;
         Thread acceptingThread;     // using Threading      //handles the accepting of new clients
 
-        public Server(string ip, int port, Action<string> guiUpdater)
+        //private Server server;
+
+        public Server(string ip, int port, Action GuiUpdater)
         {
-            GuiUpdater = guiUpdater;
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             serverSocket.Bind(new IPEndPoint(IPAddress.Parse(ip), port));
-            serverSocket.Listen(5);
+            serverSocket.Listen(5);         // wie viele Anfragen auf einmal bearbeiten
+            this.GuiUpdater = GuiUpdater;
+
+            Task.Factory.StartNew(StartAcceptingClients);
         }
-        public void StartAccepting()
+        public void StartAcceptingClients()
         {
-            acceptingThread = new Thread(new ThreadStart(Accept));
+            acceptingThread = new Thread(new ThreadStart(AcceptClients));   //
             acceptingThread.IsBackground = true;
             acceptingThread.Start();
         }
 
-        private void Accept()
+        private void AcceptClients()
         {
-            while (acceptingThread.IsAlive)
+            while (acceptingThread.IsAlive)     // while Schleife damit es parallel ablaufen kann
             {
-                try
+                try     // Probieren ob Client existiert
                 {
-                    clients.Add(new ClientHandler(serverSocket.Accept(), new Action<string, Socket>(NewMessageReceived)));
+                    // Blocking! Der Server bleibt solange stehen, bis etwas reinkommt
+                    clients.Add(new ClientHandler(serverSocket.Accept() /*, new Action<string, Socket>(NewMessageReceived)*/ ));
+                    GuiUpdater();
                 }
                 catch (Exception e)
                 {
@@ -45,21 +53,32 @@ namespace Example1_Toggle.Communication
             }
         }
 
+        /*
         private void NewMessageReceived(string message, Socket senderSocket)
         {
-            //update gui
-            GuiUpdater(message);
-            //write message to all clients
+            //GUI updaten
+            GuiUpdater(message);    // (siehe auch UpdateGuiWithNewMessage in MainViewModel)
+
+            //Nachricht an alle Clients schicken
             foreach (var item in clients)
             {
-                if (item.Clientsocket != senderSocket)
+                if (item.ClientSocket != senderSocket)
                 {
                     item.Send(message);
                 }
             }
-
         }
-
-
+        */
+        
+        
+        //SELBST: 
+        public void SendMessage(string message)
+        {
+            //ClientSocket.Send(Encoding.UTF8.GetBytes(message));
+            foreach (var item in clients)
+            {
+                item.ClientSocket.Send(Encoding.UTF8.GetBytes(message));
+            }
+        }
     }
 }

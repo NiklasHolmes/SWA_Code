@@ -70,8 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Communication\Client.cs" />
     <Compile Include="Communication\ClientHandler.cs" />
     <Compile Include="Communication\Server.cs" />
+    <Compile Include="Converter\BoolToColorConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">

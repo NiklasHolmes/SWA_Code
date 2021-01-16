@@ -89,7 +89,7 @@ namespace Dojo4_Server.ViewModel
                 //neue Nachricht zu Nachrichten-Collection hinzufügen
                 Messages.Add(message);
 
-                // GUI informieren, dass Nachrichtenanzhal gestiegen ist
+                // GUI informieren, dass Nachrichtenanzahl gestiegen ist
                 RaisePropertyChanged("MessagesCnt");
             });
         }

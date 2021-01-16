@@ -53,6 +53,7 @@ namespace OurFirstServer
             clientSocket.Send(Encoding.ASCII.GetBytes("Hello Client! Ready to receive data..."));       // ACII => damit String umgewandelt wird
             */
 
+
             while (true)                 // while Schleife damit es parallel ablaufen kann
             {
                 Console.WriteLine("Ready to accept a Client");

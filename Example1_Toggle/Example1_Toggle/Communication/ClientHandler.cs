@@ -11,43 +11,48 @@ namespace Example1_Toggle.Communication
     public class ClientHandler
     {
         private Action<string, Socket> action;
-        private byte[] buffer = new byte[512];
+        byte[] buffer = new byte[512];
         private Thread clientReceiveThread;
+        // gleichzeitiges Ausführen (= Multitasking) (z.B. mehrere Clients können gleichzeitig an Server senden
 
-        public Socket Clientsocket
+        public Socket ClientSocket
         {
             get;
             private set;
         }
 
-        public ClientHandler(Socket socket, Action<string, Socket> action)
+
+        public ClientHandler(Socket socket /*, Action<string, Socket> action*/)
         {
-            this.Clientsocket = socket;
-            this.action = action;
+            this.ClientSocket = socket;
+            //this.action = action;
             //start receiving in a new thread
-            clientReceiveThread = new Thread(Receive);
-            clientReceiveThread.Start();
+            //clientReceiveThread = new Thread(ReceiveMessages);
+            //clientReceiveThread.Start();
         }
 
-        private void Receive()
+        /*
+        public void ReceiveMessages()
         {
-            string message = "";
-            while (true)
+            string newMessage = "";
+            while (!newMessage.Contains("@quit") || true)
             {
-                int length = Clientsocket.Receive(buffer);
-                message = Encoding.UTF8.GetString(buffer, 0, length);
-                //set name property if not already done
+                int length = ClientSocket.Receive(buffer);                  //schreib alle empfangenden Daten in buffer rein und gib Länge zurück
+                newMessage = Encoding.ASCII.GetString(buffer, 0, length);   //fang bei 0 zu zählen an und gib nur zurück wieviele empfangen wurden
 
-                //inform GUI via delegate
-                action(message, Clientsocket);
+                //GUI durch Delegate informieren:
+                action(newMessage, ClientSocket);
             }
         }
+        */
 
+        /*
         public void Send(string message)
         {
-            Clientsocket.Send(Encoding.UTF8.GetBytes(message));
+            ClientSocket.Send(Encoding.UTF8.GetBytes(message));
         }
-
+        */
+        
 
     }
 }

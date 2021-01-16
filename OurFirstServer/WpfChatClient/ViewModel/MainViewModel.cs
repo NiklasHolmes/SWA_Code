@@ -9,7 +9,7 @@ namespace WpfChatClient.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        public RelayCommand ConnectBtnClikcCmd { get; set; }        // wichtig Wpf usen hier!
+        public RelayCommand ConnectBtnClickCmd { get; set; }        // wichtig Wpf usen hier!
         public RelayCommand SendBtnClickCmd { get; set; }
         public string Name { get; set; }
         public string Message { get; set; }
@@ -21,23 +21,21 @@ namespace WpfChatClient.ViewModel
         public MainViewModel()
         {
             Message = "";
+            Name = "";
 
-            ConnectBtnClikcCmd = new RelayCommand(
+            ConnectBtnClickCmd = new RelayCommand(
                 () => {
-
                     client = new Client(10100);
+                    client.SendData(Name + "\r\n"); //Send name information
                     isConnected = true;
-
                 },      // Action what to do after button clicked
-                () => { return !isConnected; });     // is Clickable?
+                () => { return !isConnected && Name.Length > 1; });     // Button klickbar?
 
             SendBtnClickCmd = new RelayCommand(
                 () => {
-
                     client.SendData(Message + "\r\n");
-
-                },      // Action what to do after button clicked
-                () => { return isConnected && Message.Length > 1; });     // is Clickable
+                }, // Action what to do after button clicked
+                () => { return isConnected && Message.Length > 1; });     // Button klickbar?
 
         }
     }

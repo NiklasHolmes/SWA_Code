@@ -1,0 +1,54 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dojo6"
+        xmlns:ViewModel="clr-namespace:Dojo6.ViewModel"
+        xmlns:views="clr-namespace:Dojo6.Views"
+        xmlns:vm="clr-namespace:Dojo6.ViewModel"
+        xmlns:Converter="clr-namespace:Dojo6.Converter" x:Class="Dojo6.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Converter:StatusToImageConverter x:Key="StatusToImageConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Mode="OneWay" Path="Main" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Button Content="Overview" Command="{Binding MenuBtnClickCmd}" CommandParameter="overview" Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75"/>
+        <Button Content="My Toys" Command="{Binding MenuBtnClickCmd}" CommandParameter="mytoys" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75"/>
+        
+        <Border Background="Beige" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="50,0,0,0" Margin="10" BorderBrush="Black" BorderThickness="1"/>
+        
+        <ContentControl Grid.Column="1" Margin="10" Content="{Binding CurrentDetail}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:CategoryVm}">
+                    <views:CategoryView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:MyToysVm}">
+                    <views:MyToysView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+        
+        
+        <Grid Background="AliceBlue" Visibility="{Binding StatusVisible}" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="607" Grid.Row="1">
+            <Image HorizontalAlignment="Left" Height="40" Width="40" Source="{Binding StatusImage, Converter={StaticResource StatusToImageConverter}}" />
+            <Label Content="{Binding StatusText}" HorizontalAlignment="Left" Margin="75,10,0,10"/>
+        </Grid>
+        
+        
+    </Grid>
+
+</Window>

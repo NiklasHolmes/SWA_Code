@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 
 namespace Dojo5.ViewModel
 {
-
     public class MainViewModel : ViewModelBase
     {
         private ToyVm toy;

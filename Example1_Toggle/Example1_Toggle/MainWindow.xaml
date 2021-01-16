@@ -1,22 +1,33 @@
-﻿<Window x:Class="Example1_Toggle.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Example1_Toggle"
+        xmlns:ViewModel="clr-namespace:Example1_Toggle.ViewModel" xmlns:Converter="clr-namespace:Example1_Toggle.Converter" x:Class="Example1_Toggle.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <Converter:BoolToColorConverter x:Key="BoolToColorConverter"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="116*"/>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="16*"/>
             <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Right" Margin="0,10,20,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="152">
+        <Grid HorizontalAlignment="Right" Margin="0,10.2,19.6,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="152" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="4*"/>
@@ -24,28 +35,27 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <Button Content="Toggle" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Toggle" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Toggle" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Toggle" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Width="75"/>
-
-            <Ellipse Grid.Column="1" Fill="#FFF4F4F5" Margin="0,7,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
-            <Ellipse Grid.Column="1" Fill="#FFF4F4F5" Margin="0,47,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
-            <Ellipse Grid.Column="1" Fill="#FFF4F4F5" Margin="0,87,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
-            <Ellipse Grid.Column="1" Fill="#FFF4F4F5" Margin="0,127,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
-
+            
+            <Button Visibility="{Binding ToggleVis}" Command="{Binding Toggle1Cmd}" Content="Toggle" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Visibility="{Binding ToggleVis}" Command="{Binding Toggle2Cmd}" Content="Toggle" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Visibility="{Binding ToggleVis}" Command="{Binding Toggle3Cmd}" Content="Toggle" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Visibility="{Binding ToggleVis}" Command="{Binding Toggle4Cmd}" Content="Toggle" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Width="75"/>
+            
+            <Ellipse Grid.Column="1" Fill="{Binding Toggle1Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,7,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
+            <Ellipse Grid.Column="1" Fill="{Binding Toggle2Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,47,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
+            <Ellipse Grid.Column="1" Fill="{Binding Toggle3Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,87,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
+            <Ellipse Grid.Column="1" Fill="{Binding Toggle4Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,127,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
+            
 
         </Grid>
-        
-        <Label Content="History" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="26" Margin="3,0,0,228.6" Grid.RowSpan="2" Width="48"/>
 
-        <Button Command="{Binding ListenBtnClickCmd}" Content="Listen" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,100,10" Grid.Row="2" VerticalAlignment="Bottom" Width="75"/>
-        <Button Command="{Binding ConnectBtnClickCmd}" Content="Connect" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="2" VerticalAlignment="Bottom" Width="75"/>
+        <Label Content="History" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="26" Margin="3.4,0,0,115.3" Grid.RowSpan="2" Width="48"/>
+
+        <Button Command="{Binding ListenBtnClickCmd}" Content="Listen" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,99.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
+        <Button Command="{Binding ConnectBtnClickCmd}" Content="Connect" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,9.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
+
+        <ListBox Grid.Column="1" Margin="10.4,10.2,9.6,9.6" Grid.Row="1" ItemsSource="{Binding ReceivedHistory}" Grid.RowSpan="2"/>
         
-        <ListBox Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Top"/>
-        
-        
-        
+
     </Grid>
 </Window>
