@@ -65,12 +65,22 @@ namespace Dojo6.ViewModel
         {
             // alles gut verlaufen? Dann Info ausgeben:
             StatusVisible = "Visible";
-            StatusImage = "Info";
-            StatusText = "New Entry Added";
-            timer.Start();
+
+            // um MEssageBar zu zeigen:
+            if (toyToCart.Description.Equals("Baby Yoda"))
+            {
+                StatusImage = "Ok";
+                StatusText = "Good Choice!!";
+                timer.Start();
+            }
+            else {
+                StatusImage = "Info";
+                StatusText = "New Entry Added";
+                timer.Start();
+            }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)     // nach 2 Sekunden geht er hier rein
         {
             StatusVisible = "Hidden";
             StatusImage = "";

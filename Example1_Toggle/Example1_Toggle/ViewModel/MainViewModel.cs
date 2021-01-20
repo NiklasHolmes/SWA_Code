@@ -3,23 +3,13 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
 namespace Example1_Toggle.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
+
     public class MainViewModel : ViewModelBase
     {
         #region  TOGGLE Value
@@ -50,10 +40,12 @@ namespace Example1_Toggle.ViewModel
         }
         #endregion
 
+        // Communication:
         private Server server;
+        private Client clientCom;
         private const int port = 10100;
         private const string ip = "127.0.0.1";
-        private Client clientcom;
+
 
         public RelayCommand ConnectBtnClickCmd { get; set; }
         public RelayCommand ListenBtnClickCmd { get; set; }
@@ -77,6 +69,8 @@ namespace Example1_Toggle.ViewModel
 
         private DateTime _now;
 
+        public string aktuelleDaten = "";
+
         public MainViewModel()
         {
             ReceivedHistory = new ObservableCollection<string>();
@@ -86,23 +80,28 @@ namespace Example1_Toggle.ViewModel
             ServerCon = false;
             ClientCon = false;
 
-            ConnectBtnClickCmd = new RelayCommand(
-                () =>
-                {
-                    server = new Server(ip, port, GuiUpdater);
-                    //server.StartAcceptingClients();
-                    ServerCon = true;
-                },
-                () => { return (!ServerCon && !ClientCon); }
-            );
-
+            //Connect as Server Button => Listen
             ListenBtnClickCmd = new RelayCommand(
                 () =>
                 {
-                    ClientCon = true;
-                    ToggleVis = "Hidden";
-                    clientcom = new Client(ip, port, new Action<string>(NewMessageReceived));
-                },
+                    server = new Server(ip, port, GuiUpdater);
+                    ServerCon = true;
+                    //ClientCon = false; // unntöig
+                    RaisePropertyChanged("ConnectedAsServer");
+                    RaisePropertyChanged("ConnectedAsClient");
+                }, () => { return (!ServerCon && !ClientCon); }
+            );
+
+            //Connect as Client Button => Connect
+            ConnectBtnClickCmd = new RelayCommand(() =>
+            {
+                clientCom = new Client(IPAddress.Loopback, port, new Action<string>(NewMessageReceived));
+                ServerCon = false;
+                ClientCon = true;
+                ToggleVis = "Hidden";
+
+                ReceivedHistory = new ObservableCollection<string>();
+            },
                 () => { return (!ServerCon && !ClientCon); }
             );
 
@@ -123,7 +122,7 @@ namespace Example1_Toggle.ViewModel
                     ReceivedHistory.Add("Toggle 1 " + value + " " + hms);
                     RaisePropertyChanged("ReceivedHistory");
 
-                    server.SendMessage(message);
+                    GuiUpdater(message);
                 },
                 () => { return ServerCon; }
             );
@@ -141,7 +140,8 @@ namespace Example1_Toggle.ViewModel
                     ReceivedHistory.Add("Toggle 2 " + value + " " + hms);
                     RaisePropertyChanged("ReceivedHistory");
 
-                    server.SendMessage(message);
+                    //server.SendMessage(message);
+                    GuiUpdater(message);
                 },
                 () => { return ServerCon; }
             );
@@ -156,7 +156,8 @@ namespace Example1_Toggle.ViewModel
                     string message = ("3x" + value + "x" + hms);
                     ReceivedHistory.Add("Toggle 3 " + value + " " + hms);
                     RaisePropertyChanged("ReceivedHistory");
-                    server.SendMessage(message);
+                    //server.SendMessage(message);
+                    GuiUpdater(message);
                 },
                 () => { return ServerCon; }
             );
@@ -171,7 +172,8 @@ namespace Example1_Toggle.ViewModel
                     string message = ("4x" + value + "x" + hms);
                     ReceivedHistory.Add("Toggle 4 " + value + " " + dmy);
                     RaisePropertyChanged("ReceivedHistory");
-                    server.SendMessage(message);
+                    //server.SendMessage(message);
+                    GuiUpdater(message);
                 },
                 () => { return ServerCon; }
             );
@@ -179,7 +181,7 @@ namespace Example1_Toggle.ViewModel
         }
 
 
-        // Client:
+        // Client Receives:
         private void NewMessageReceived(string message)
         {
             //write new message in Collection to display in GUI
@@ -198,7 +200,8 @@ namespace Example1_Toggle.ViewModel
                         newvalue = "[red]";
                     }
 
-                    ReceivedHistory.Add("Von Server: Toggle " + toggle[0] + " " + newvalue + " " + toggle[2]);
+                    aktuelleDaten = "Von Server: Toggle " + toggle[0] + " " + newvalue + " " + toggle[2];
+                    ReceivedHistory.Add(aktuelleDaten);
 
                     switch (toggle[0])
                     {
@@ -217,27 +220,39 @@ namespace Example1_Toggle.ViewModel
                         default:
                             break;
                     }
+                    RaisePropertyChanged("ReceivedHistory");
                 }
-
             });
         }
 
-        private void GuiUpdater() {
+        private void GuiUpdater(string obj) {
 
-            int i = 0;
-            foreach (var client in server.clients)
+            if (obj == "newClient")
             {
-                i++;
-                if (i == server.clients.Count)
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    foreach (var message in ReceivedHistory)
+                    int i = 0;
+                    foreach (var client in server.clients)
                     {
-                        client.ClientSocket.Send(Encoding.UTF8.GetBytes(message));
+                        i++;
+                        if (i == server.clients.Count)
+                        {
+                            foreach (var message in ReceivedHistory)
+                            {
+                                client.ClientSocket.Send(Encoding.UTF8.GetBytes(message));
+                            }
+                        }
                     }
-                }
+                });
             }
-
+            else
+            {
+                foreach (var client in server.clients)
+                {
+                    client.ClientSocket.Send(Encoding.UTF8.GetBytes(obj));
+                }
+                obj = "";
+            }
         }
-
     }
 }

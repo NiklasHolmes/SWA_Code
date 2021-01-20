@@ -29,6 +29,7 @@ namespace Dojo6.ViewModel
 
         private void AddToWisList(ToyVm obj)
         {
+
             WishList.Add(obj);
             RaisePropertyChanged("WishList");
         }

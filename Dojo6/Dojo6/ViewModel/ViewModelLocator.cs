@@ -40,7 +40,7 @@ namespace Dojo6.ViewModel
 
             // die vier Vms:
             SimpleIoc.Default.Register<MyToysVm>(true); // true = damit verpflichtend erzeugt wird
-            SimpleIoc.Default.Register<StatusBarVm>(true);
+            //SimpleIoc.Default.Register<StatusBarVm>(true);
             SimpleIoc.Default.Register<CategoryVm>(true);
 
         }
@@ -58,13 +58,6 @@ namespace Dojo6.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MyToysVm>(); //schaut Gibt es die Instanz schon oder nicht?
-            }
-        }
-        public StatusBarVm StatusBar
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<StatusBarVm>(); //schaut Gibt es die Instanz schon oder nicht?
             }
         }
         public CategoryVm Categories

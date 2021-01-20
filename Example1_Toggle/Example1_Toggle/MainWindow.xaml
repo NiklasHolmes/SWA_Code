@@ -45,17 +45,15 @@
             <Ellipse Grid.Column="1" Fill="{Binding Toggle2Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,47,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
             <Ellipse Grid.Column="1" Fill="{Binding Toggle3Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,87,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
             <Ellipse Grid.Column="1" Fill="{Binding Toggle4Value, Converter={StaticResource BoolToColorConverter}}" Margin="0,127,0,0" HorizontalAlignment="Center" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
-            
 
         </Grid>
 
         <Label Content="History" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="26" Margin="3.4,0,0,115.3" Grid.RowSpan="2" Width="48"/>
 
-        <Button Command="{Binding ListenBtnClickCmd}" Content="Listen" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,99.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
-        <Button Command="{Binding ConnectBtnClickCmd}" Content="Connect" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,9.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
+        <Button Command="{Binding ListenBtnClickCmd}" Content="Listen (S)" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,99.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
+        <Button Command="{Binding ConnectBtnClickCmd}" Content="Connect (C)" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,9.6,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
 
         <ListBox Grid.Column="1" Margin="10.4,10.2,9.6,9.6" Grid.Row="1" ItemsSource="{Binding ReceivedHistory}" Grid.RowSpan="2"/>
         
-
     </Grid>
 </Window>

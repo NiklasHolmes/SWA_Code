@@ -1,0 +1,81 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Example11_KanbanBoard"
+        xmlns:ViewModel="clr-namespace:Example11_KanbanBoard.ViewModel" x:Class="Example11_KanbanBoard.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Margin="10,10,10,50" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Tag" Margin="10,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                <Label Content="Time" Margin="10,55,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                <Label Content="Person" Margin="10,95,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                <Label Content="Duration" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.RowSpan="2"/>
+                <Label Content="Urgent" Margin="10,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.RowSpan="2"/>
+                <Label Content="Column" Margin="10,160,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.RowSpan="2"/>
+
+                <TextBox Text="{Binding Tag}" Grid.Column="1" Margin="0,20,0,0" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Top" Width="50"/>
+                <TextBox Text="{Binding Time}" Grid.Column="1" Margin="0,60,0,0" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Top" Width="50"/>
+                <TextBox Text="{Binding Person}" Grid.Column="1" Margin="0,100,0,0" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Top" Width="50"/>
+
+                <TextBox Text="{Binding TextBoxIntValue}" Grid.Column="1" Margin="0,40,0,0" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Center" Width="50"/>
+
+                <CheckBox IsChecked="{Binding CheckBoxBoolValue}" Margin="0,110,0,0" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="90" SelectedItem="{Binding SelectedComboBoxValue}"  Margin="12.4,221,9.8,56.4" ItemsSource="{Binding ComboBoxList}"/>
+
+                <Button Content="Add" Command="{Binding AddBtnClickCmd}" Grid.Column="1" HorizontalAlignment="Left" Margin="38.4,269,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="75"/>
+
+
+
+            </Grid>
+        </Border>
+
+        <Border Margin="10,10,10,50" Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="129*"/>
+                </Grid.RowDefinitions>
+
+                
+
+
+            </Grid>
+        </Border>
+
+
+
+    </Grid>
+</Window>

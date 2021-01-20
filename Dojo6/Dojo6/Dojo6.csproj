@@ -77,7 +77,6 @@
     <Compile Include="ViewModel\CategoryVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MyToysVm.cs" />
-    <Compile Include="ViewModel\StatusBarVm.cs" />
     <Compile Include="ViewModel\ToyVm.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\CategoryView.xaml.cs">
@@ -85,9 +84,6 @@
     </Compile>
     <Compile Include="Views\MyToysView.xaml.cs">
       <DependentUpon>MyToysView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StatusBarView.xaml.cs">
-      <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,10 +102,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MyToysView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\StatusBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

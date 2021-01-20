@@ -37,7 +37,7 @@
         <!-- DataContext => NEW (vorher schon Prop angelegt-->
         <TextBox Text="{Binding MyIntValue}" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Center" Width="50"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="120" SelectedItem="{Binding MyStringValue}" ItemsSource="{Binding Main.ColList, Source={StaticResource Locator}}"/>
-
+        
         <Rectangle Fill="{Binding MyBoolValue, Converter={StaticResource BoolToBrushConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Stroke="Black" Width="73" Grid.Column="2" Grid.Row="1"/>
         <Ellipse Fill="{Binding MyIntValue, Converter={StaticResource IntToBrushConverter}}" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="70" Grid.Row="2" Stroke="Black" />
         <Label Content="{Binding MyStringValue}" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Foreground="{Binding MyStringValue, Converter={StaticResource StringToBrushConverter}}"/>

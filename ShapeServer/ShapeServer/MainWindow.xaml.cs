@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dojo6.Views
+namespace ShapeServer
 {
     /// <summary>
-    /// Interaction logic for StatusBarView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class StatusBarView : UserControl
+    public partial class MainWindow : Window
     {
-        public StatusBarView()
+        public MainWindow()
         {
             InitializeComponent();
         }

@@ -15,31 +15,24 @@ namespace Example1_Toggle.Communication
         Action<string> MessageInformer;
         //Action AbortInformer;
 
-        public Client(string ip, int port, Action<string> messageInformer)
+
+        public Client(IPAddress ip, int port, Action<string> messageInformer)
         {
             try
             {
-                this.MessageInformer = messageInformer;     //
+                this.MessageInformer = messageInformer;
                 TcpClient client = new TcpClient();
-                client.Connect(IPAddress.Parse(ip), port);
+                client.Connect(ip, port);
                 clientsocket = client.Client;
                 //StartReceiving();
                 Task.Factory.StartNew(Receive);
             }
             catch (Exception)
             {
-                messageInformer("Server not ready");
+                messageInformer("Server is not ready!");
                 //AbortInformer(); //reset Client Communication
             }
         }
-
-        /*
-        public void StartReceiving()
-        {
-            //Start receiving in new Thread
-            Task.Factory.StartNew(Receive);
-        }
-        */
 
         private void Receive()
         {
