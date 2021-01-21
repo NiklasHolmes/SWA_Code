@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <Converter:BoolToImageConverter x:Key="BoolToImageConverter"/>
         <Converter:StringToBrushConverter x:Key="StringToBrushConverter"/>
         <Converter:IntToBrushConverter x:Key="IntToBrushConverter"/>
         <Converter:BoolToBrushConverter x:Key="BoolToBrushConverter"/>
@@ -28,7 +29,11 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <Image Source="../Images/Rip.png" Height="50" Width="50" Opacity="0.5"/>
+        <Image  Height="40" Width="40" Grid.Column="2" Source="{Binding MyBoolValue, Converter={StaticResource BoolToImageConverter}}"/>
+        <!--SourceBinding, Add Converter-->
+        
         <Label Content="Label" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
         <Label Content="Label" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
         <Label Content="Label" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center"/>

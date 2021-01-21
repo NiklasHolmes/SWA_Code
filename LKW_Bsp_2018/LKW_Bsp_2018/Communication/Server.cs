@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FlugzeugBsp_2019.Communication
+namespace LKW_Bsp_2018.Communication
 {
     public class Server
     {
@@ -17,7 +17,7 @@ namespace FlugzeugBsp_2019.Communication
 
         int port = 10100;
 
-        //Thread acceptingThread;
+        Thread acceptingThread;
 
         public Server(Action<string> guiUpdater)
         {
@@ -33,7 +33,6 @@ namespace FlugzeugBsp_2019.Communication
             serverSocket.Listen(5);
 
             //StartAcceptingClients ist im MainViewModel.cs
-            //StartAcceptingClients();
             Task.Factory.StartNew(AcceptClients);
         }
 
@@ -65,6 +64,8 @@ namespace FlugzeugBsp_2019.Communication
                 }
             }
             */
+
+
         }
     }
 }

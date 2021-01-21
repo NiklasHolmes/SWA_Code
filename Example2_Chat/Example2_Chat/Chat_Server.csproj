@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6209ACE7-0E75-45B6-A307-13B3DE11869F}</ProjectGuid>
+    <ProjectGuid>{68534F3A-7670-41A7-9336-52D9696E1836}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>LKW_Bsp_2018</RootNamespace>
-    <AssemblyName>LKW_Bsp_2018</AssemblyName>
+    <RootNamespace>Example2_Chat</RootNamespace>
+    <AssemblyName>Example2_Chat</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,11 +72,8 @@
     </ApplicationDefinition>
     <Compile Include="Communication\ClientHandler.cs" />
     <Compile Include="Communication\Server.cs" />
-    <Compile Include="Converter\IntToBrushConverter.cs" />
-    <Compile Include="ViewModel\Ladung.cs" />
-    <Compile Include="ViewModel\LKW.cs" />
+    <Compile Include="ViewModel\ClientUser.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\Produkt.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Telnet_Client\Telnet_Client.csproj">
+      <Project>{16969E7C-1261-46EB-BD6A-37FF917195BF}</Project>
+      <Name>Telnet_Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

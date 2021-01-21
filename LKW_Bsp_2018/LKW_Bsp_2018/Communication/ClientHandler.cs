@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FlugzeugBsp_2019.Communication
+namespace LKW_Bsp_2018.Communication
 {
     public class ClientHandler
     {
         private Action<string> GuiUpdaterAction;
-        
+        //private Thread clientReceiveThread;
         private Socket ClientSocket;
 
         byte[] buffer = new byte[256]; // oder 512
-
-        //private Thread clientReceiveThread;
 
         public ClientHandler(Socket cs, Action<string> action)
         {

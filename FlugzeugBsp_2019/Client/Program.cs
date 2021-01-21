@@ -31,7 +31,6 @@ namespace Client
                         flug += ";";
                     }
                 }
-
                 Console.WriteLine(flug);
 
                 Cl.SendData(Encoding.UTF8.GetBytes(flug));

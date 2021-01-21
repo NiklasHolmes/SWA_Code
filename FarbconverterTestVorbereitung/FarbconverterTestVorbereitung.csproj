@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\BoolToBrushConverter.cs" />
+    <Compile Include="Converter\BoolToImageConverter.cs" />
     <Compile Include="Converter\IntToBrushConverter.cs" />
     <Compile Include="Converter\StringToBrushConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -114,6 +115,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Alive.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Rip.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

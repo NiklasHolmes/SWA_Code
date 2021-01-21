@@ -1,12 +1,103 @@
-﻿<Window x:Class="LKW_Bsp_2018.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LKW_Bsp_2018"
+        xmlns:ViewModel="clr-namespace:LKW_Bsp_2018.ViewModel" xmlns:Converter="clr-namespace:LKW_Bsp_2018.Converter" x:Class="LKW_Bsp_2018.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Converter:IntToBrushConverter x:Key="IntToBrushConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="14*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5,5,5,30" SelectedItem="{Binding SelectedLKW}" ItemsSource="{Binding LKWs}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Height="50" CornerRadius="2" BorderThickness="1" Width="175">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Content ="{Binding ID}" FontSize="16"/>
+                            <Rectangle Fill="{Binding Ladungsgewicht, Converter={StaticResource IntToBrushConverter}}" VerticalAlignment="Center" HorizontalAlignment="Left" Width="60" Height="40" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         
+        <ItemsControl Grid.Column="1" Grid.Row="1" Margin="5" ItemsSource="{Binding DisplayedLadung}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Height="110" Width="110" CornerRadius="2" BorderBrush="Black" BorderThickness="2" Margin="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Produkt1: " Grid.Column="0" FontSize="10"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Produkt2: " Grid.Column="0" Grid.Row="1" FontSize="10"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Produkt3: " Grid.Column="0" Grid.Row="2" FontSize="10"/>
+
+                            <ItemsControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="0,2,0,0" ItemsSource="{Binding Produkte}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Produktname}" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="0,3,0,0"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Button Content="Löschen" Grid.Row="3" Grid.ColumnSpan="3" Margin="5,0,5,0"
+                                        Command="{Binding DataContext.DeleteLadungBtnClickCmd, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                        CommandParameter="{Binding}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <Label Content="Anzahl Übermittlungen: " Grid.Column="1" Grid.Row="3" />
+        <Label Grid.Column="1" Grid.Row="3" Margin="230,0,0,0" Content="{Binding DisplayedLadung.Count, Mode=OneWay}" />
+        
+        <Label Content="Summe der übermittelnden Ladungen: " Grid.Column="1" Grid.Row="3" Margin="0,30,0,0"/>
+        <Label Content="{Binding Produktanzahl}"  Grid.Column="1" Grid.Row="3" Margin="230,30,0,0"/>
+
     </Grid>
+
 </Window>

@@ -97,6 +97,5 @@ namespace Dojo4_Server.Communication
                 }
             }
         }
-
     }
 }

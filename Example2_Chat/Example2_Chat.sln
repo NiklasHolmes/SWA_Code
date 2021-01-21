@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat_Server", "Example2_Chat\Chat_Server.csproj", "{68534F3A-7670-41A7-9336-52D9696E1836}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telnet_Client", "Telnet_Client\Telnet_Client.csproj", "{16969E7C-1261-46EB-BD6A-37FF917195BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68534F3A-7670-41A7-9336-52D9696E1836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68534F3A-7670-41A7-9336-52D9696E1836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68534F3A-7670-41A7-9336-52D9696E1836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68534F3A-7670-41A7-9336-52D9696E1836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16969E7C-1261-46EB-BD6A-37FF917195BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16969E7C-1261-46EB-BD6A-37FF917195BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16969E7C-1261-46EB-BD6A-37FF917195BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16969E7C-1261-46EB-BD6A-37FF917195BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DECB4E1D-219D-45B1-8749-82E6B7AF243A}
+	EndGlobalSection
+EndGlobal

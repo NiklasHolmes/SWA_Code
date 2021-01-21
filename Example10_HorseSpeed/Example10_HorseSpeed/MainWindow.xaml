@@ -68,7 +68,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Height="40" Width="{Binding Speed}" HorizontalAlignment="Left" Margin="2" Fill="LawnGreen" />
                                     <!--<Image Source="{Binding Main.Image}" HorizontalAlignment="Right" Height="40" DataContext="{Binding Source={StaticResource Locator}}"  />-->
-                                    <Image Source="HorseCopy.png" HorizontalAlignment="Right" Height="40" Opacity="0.5"/>
+                                    <Image Source="../Images/Horse.png" HorizontalAlignment="Right" Height="40" Opacity="0.5"/>
                                     <!-- Source="../Images/Horse.png"  geht auch!-->
                                 </StackPanel>
                                 <Label Content="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"  Margin="5" FontSize="16"/>

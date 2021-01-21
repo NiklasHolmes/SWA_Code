@@ -21,8 +21,6 @@ namespace FlugzeugBsp_2019.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-
-
         public ObservableCollection<Flug> Flights { get; set; }
         public ObservableCollection<Container> DisplayedContainer { get; set; }
         public ObservableCollection<Container> Containerliste1 { get; set; }
@@ -39,7 +37,8 @@ namespace FlugzeugBsp_2019.ViewModel
             set { 
                 selectedFlight = value;
                 RaisePropertyChanged();
-                DisplayContainer(value.Flugnummer);
+                if (value != null)
+                    DisplayContainer(value.Flugnummer);
                 RaisePropertyChanged("DisplayedContainer");
                 ProduktanzahlBerechnen();
             }
@@ -52,7 +51,7 @@ namespace FlugzeugBsp_2019.ViewModel
             get { return produktanzahl; }
             set { 
                 produktanzahl = value;
-                RaisePropertyChanged("Produktanzahl");
+                RaisePropertyChanged();
             }
         }
 
@@ -106,7 +105,6 @@ namespace FlugzeugBsp_2019.ViewModel
 
             // Kommunikation:
             Server = new Server(GuiUpdater);
-
         }
 
         public bool CheckContainer()
@@ -135,6 +133,18 @@ namespace FlugzeugBsp_2019.ViewModel
 
         public void ProduktanzahlBerechnen ()
         {
+            // Produktanzahl gesamt: 
+            int i = 0;
+            foreach (var flug in Flights)
+            {
+                foreach (var item in flug.Containerliste)
+                {
+                    i += item.Produkte.Count;
+                }
+            }
+            Produktanzahl = i;
+
+            /*  Produktanzahl pro selectedFlugzeug: 
             int i = 0;
             foreach (var item in SelectedFlight.Containerliste)
             {
@@ -142,6 +152,7 @@ namespace FlugzeugBsp_2019.ViewModel
             }
             Produktanzahl = i;
             //RaisePropertyChanged("Produktanzahl");
+            */
         }
 
         public void DeleteContainer(Container delcon)
@@ -158,17 +169,13 @@ namespace FlugzeugBsp_2019.ViewModel
             ProduktanzahlBerechnen();
         }
 
-
         private void GuiUpdater(string msg)
         {
             App.Current.Dispatcher.Invoke(
                  () =>
                  {
-
                      Console.WriteLine(msg);
-
                      // Example string: F4716:(Bananen,Autoreifen,);(Autoreifen,,)
-
                      string[] split = msg.Split(':');
 
                      /* split =
@@ -223,6 +230,7 @@ namespace FlugzeugBsp_2019.ViewModel
 
                      newFlight.Containeranzahl = newFlight.Containerliste.Count();
                      Flights.Add(newFlight);
+                     ProduktanzahlBerechnen();
                  });
         }
     }
