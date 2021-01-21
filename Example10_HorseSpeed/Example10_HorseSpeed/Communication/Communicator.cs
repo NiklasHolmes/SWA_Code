@@ -24,7 +24,7 @@ namespace Example10_HorseSpeed.Communication
         {
             this.GuiUpdater = guiUpdater;
 
-            if (isServer)       // wenn Server dann Server aufbauen:
+            if (isServer)
             {
                 clients = new List<ClientHandler>();
                 serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -82,12 +82,12 @@ namespace Example10_HorseSpeed.Communication
             {
                 //length = clientSocket.Receive(buffer);
                 //informer(Encoding.UTF8.GetString(buffer, 0, length));
-                string dta = "";
+                string data = "";
                 while (true)
                 {
                     int length = clientSocket.Receive(buffer);
-                    dta = Encoding.UTF8.GetString(buffer, 0, length);
-                    GuiUpdater(dta);
+                    data = Encoding.UTF8.GetString(buffer, 0, length);
+                    GuiUpdater(data);
                 }
             }
         }
